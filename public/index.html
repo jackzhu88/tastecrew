@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TasteCrew — group nights with cultural consensus</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>TasteCrew</h1>
+      <p>
+        An agentic planner that finds a dinner + entertainment night your whole group will
+        actually like — grounded in Qloo’s taste graph, not LLM vibes. Then it proposes a
+        fair cost split so nobody argues about the bill.
+      </p>
+      <span class="badge" id="modeBadge">checking Qloo mode…</span>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>1. Who’s going?</h2>
+        <div id="members"></div>
+        <button type="button" class="secondary" id="addMember">+ Add person</button>
+
+        <div class="row">
+          <div>
+            <label>Mood</label>
+            <input id="mood" value="casual dinner + a film" />
+          </div>
+          <div>
+            <label>Budget / person (USD)</label>
+            <input id="budget" type="number" min="10" value="45" />
+          </div>
+        </div>
+        <label>City (optional hint)</label>
+        <input id="city" placeholder="e.g. New York" value="New York" />
+
+        <button type="button" id="planBtn">Plan the night</button>
+        <p class="warn" id="hint">
+          Runs in mock mode until a free Qloo hackathon API key is set in <code>.env</code>.
+        </p>
+      </section>
+
+      <section class="card result">
+        <h2>2. Agent output</h2>
+        <div id="out" class="muted">Submit a group to see the consensus plan, Qloo steps, and fair split.</div>
+      </section>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "tastecrew",
+  "version": "0.1.0",
+  "description": "TasteCrew — agentic group night planner powered by Qloo taste intelligence",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.mjs",
+    "dev": "node --watch server/index.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "dotenv": "^16.4.7"
+  },
+  "license": "MIT"
+}
