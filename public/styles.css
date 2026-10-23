@@ -69,3 +69,5 @@ button:disabled { opacity: 0.5; cursor: wait; }
 }
 .money { font-variant-numeric: tabular-nums; color: var(--accent2); font-weight: 600; }
 .warn { color: var(--warn); font-size: 12px; margin-top: 8px; }
+.pick { display: flex; gap: 12px; align-items: flex-start; margin: 6px 0 10px; }
+.pick img { width: 96px; height: 72px; object-fit: cover; border-radius: 8px; }
