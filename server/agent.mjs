@@ -32,16 +32,21 @@ function slimPlace(p = {}) {
     city: p.geocode?.city || null,
     neighborhood: p.geocode?.name || null,
     priceLevel: p.price_level ?? null,
-    rating: p.business_rating ?? null,
+    rating: p.business_rating != null ? Math.round(Number(p.business_rating) * 10) / 10 : null,
     website: p.website || null,
     image: p.images?.[0]?.url || p.image?.url || null,
     cuisine: p.cuisine || null,
   };
 }
+function truncate(t, n) {
+  if (!t) return null;
+  t = String(t).trim();
+  return t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t;
+}
 function slimMovie(p = {}) {
   return {
     year: p.release_year || p.year || null,
-    description: p.short_description || p.description || null,
+    description: truncate(p.short_description || p.description || null, 200),
     image: p.image?.url || null,
   };
 }
@@ -205,6 +210,7 @@ export async function planNight(qloo, input) {
         id: p.entity_id || p.id,
         affinity: p.affinity ?? p.query?.affinity ?? null,
         address: p.properties?.address || null,
+        neighborhood: p.properties?.geocode?.name || null,
       })),
     },
     split: {
@@ -216,7 +222,7 @@ export async function planNight(qloo, input) {
         amountCents: shares[i] || 0,
         amount: ((shares[i] || 0) / 100).toFixed(2),
       })),
-      note: 'Fair equal split of the planned night budget (not an on-chain escrow). Ties to Jack’s split-payment product line as UX; crypto optional later.',
+      note: 'Even split of the stated budget (estimate only; no payments are made).',
     },
     rationale,
     moodTags,
