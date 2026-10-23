@@ -20,7 +20,7 @@ Cultural intelligence is the differentiator: remove Qloo and the plan is vibes a
 | Would not work the same without Qloo | Rankings come from the taste graph, not invented lists |
 | Live demo + public OSS repo + MIT license | Live: https://tastecrew.onrender.com · this repo · MIT |
 
-Optional later: wire the fair-split UX to Jack’s existing SplitPay / escrow agents (Celo x402, Arc AgentTab). Core demo stays Web2 so judges can click without a wallet.
+The split is an even split of the stated budget (an estimate only; no payments are made). The demo is Web2 so judges can click without a wallet.
 
 ## Quick start
 
