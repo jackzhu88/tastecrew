@@ -95,8 +95,8 @@ function card(item, kind) {
   const img = safeUrl(p.image);
   const meta =
     kind === 'place'
-      ? [p.neighborhood, p.address, p.priceLevel ? '$'.repeat(p.priceLevel) : null, p.rating ? `★ ${p.rating}` : null]
-      : [p.year, p.description];
+      ? [p.neighborhood, p.address, p.priceLevel ? '$'.repeat(p.priceLevel) : null, p.rating != null ? `★ ${Number(p.rating).toFixed(1)}` : null]
+      : [p.year, p.description && p.description.length > 200 ? p.description.slice(0, 200).trimEnd() + '…' : p.description];
   const link = kind === 'place' && safeUrl(p.website) ? `<a href="${safeUrl(p.website)}" target="_blank" rel="noopener">website</a>` : '';
   return `<div class="pick">
     ${img ? `<img src="${img}" alt="" />` : ''}
@@ -108,7 +108,7 @@ function card(item, kind) {
 
 function renderPlan(j) {
   const alts = (j.plan?.alternatives || [])
-    .map((a) => `<span class="pill" title="${esc(a.address || '')}">${esc(a.name)}</span>`)
+    .map((a) => `<span class="pill" title="${esc(a.address || '')}">${esc(a.name)}${a.neighborhood || a.address ? ` <span class="muted">· ${esc(a.neighborhood || a.address)}</span>` : ''}</span>`)
     .join('');
   const shares = (j.split?.shares || [])
     .map((s) => `<li><strong>${esc(s.name)}</strong> — <span class="money">$${esc(s.amount)}</span></li>`)
