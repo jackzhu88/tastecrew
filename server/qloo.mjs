@@ -58,7 +58,17 @@ export function createQlooClient({ apiKey, baseUrl = DEFAULT_BASE, forceMock = f
     return request('/search', params);
   }
 
-  async function insights({ filterType, entityIds = [], take = 8 }) {
+  async function tags(query, parentType) {
+    if (mock) return { results: { tags: [] }, mock: true };
+    const body = await request('/v2/tags', { 'filter.query': query, take: '10' });
+    const all = body?.results?.tags || [];
+    const list = parentType
+      ? all.filter((t) => (t.parents || []).some((p) => p.type === parentType))
+      : all;
+    return { results: { tags: list } };
+  }
+
+  async function insights({ filterType, entityIds = [], take = 8, filterTags, locationQuery, signalTags = [] }) {
     if (mock) {
       const pool = MOCK_ENTITIES[filterType] || MOCK_ENTITIES['urn:entity:place'] || [];
       // Rank by simple overlap score against seed names in mock
@@ -76,8 +86,11 @@ export function createQlooClient({ apiKey, baseUrl = DEFAULT_BASE, forceMock = f
       take: String(take),
     };
     if (entityIds.length) {
-      params['signal.interests.entities'] = entityIds;
+      params['signal.interests.entities'] = entityIds.join(',');
     }
+    if (filterTags) params['filter.tags'] = filterTags;
+    if (locationQuery) params['filter.location.query'] = locationQuery;
+    if (signalTags.length) params['signal.interests.tags'] = signalTags.join(',');
     return request('/v2/insights', params);
   }
 
@@ -86,5 +99,6 @@ export function createQlooClient({ apiKey, baseUrl = DEFAULT_BASE, forceMock = f
     baseUrl: mock ? 'mock://local' : baseUrl,
     search,
     insights,
+    tags,
   };
 }
