@@ -1,14 +1,14 @@
 # Qloo Agentic Hackathon — notes for TasteCrew
 
-## Dates (convert to Asia/Shanghai)
+## Dates (UTC)
 
-- Submit by: **2026-10-30 23:45 EDT** ≈ **2026-10-31 11:45 Asia/Shanghai**
+- Submit by: **2026-10-30 23:45 EDT** ≈ **2026-10-31 03:45 UTC**
 - Judging: Nov 2–16, 2026 (US Eastern)
-- Winners ~ **2026-11-23 15:00 EST** ≈ **2026-11-24 Asia/Shanghai**
+- Winners ~ **2026-11-23 15:00 EST** ≈ **2026-11-23 20:00 UTC**
 
 ## Eligibility (quote)
 
-Open to individuals of majority age. **NOT open** to residents of countries/territories where US/local law prohibits participation, including Brazil, Quebec, Russia, Crimea, Cuba, Iran, North Korea, and OFAC comprehensively sanctioned countries. **China / PRC is not listed** among exclusions on the official rules page.
+Open to individuals of majority age. **NOT open** to residents of countries/territories where US/local law prohibits participation, including Brazil, Quebec, Russia, Crimea, Cuba, Iran, North Korea, and OFAC comprehensively sanctioned countries.
 
 Payout: cash via Devpost; winners may need W-8BEN / tax forms; PayPal or bank. Delivery within 60 days of completed forms.
 
